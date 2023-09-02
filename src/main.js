@@ -4,6 +4,8 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { plugin, defaultConfig } from '@formkit/vue'
 import config from '../formkit.config'
+import { VueFire, VueFireAuth } from 'vuefire'
+import { firebaseApp } from './config/firebase'
 
 import App from './App.vue'
 import router from './router'
@@ -16,3 +18,10 @@ app.use(router)
 
 
 app.mount('#app')
+
+//Configurando Firebase
+
+app.use(VueFire, {
+    firebaseApp,
+    modules: [VueFireAuth()],
+  })
