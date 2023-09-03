@@ -16,7 +16,7 @@ export default function useImage(){
 
         //Ubicacion donde se va a guardar las imagenes
 
-            const sRef = storageRef(storage, './products/' + filename)
+            const sRef = storageRef(storage, filename)
 
         //Sube el Archivo
 
