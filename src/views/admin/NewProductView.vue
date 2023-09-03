@@ -1,6 +1,9 @@
 <script setup>
 import Link from '../../components/Link.vue';
-import { FormKit } from '@formkit/vue';
+import useImage from '../../composables/useImage';
+
+const { onFileChange, url, isImageUploaded } = useImage()
+
 </script>
 
 <template>
@@ -19,6 +22,7 @@ import { FormKit } from '@formkit/vue';
                 <FormKit
                     type="form"
                     submit-label="Agregar Producto"
+                    incomplete-message="No se pudo enviar, hay campos vacios"
                 >
                     <FormKit
                         type="text"
@@ -37,7 +41,20 @@ import { FormKit } from '@formkit/vue';
                         :validation-messages="{required: 'La Imagen del Producto es Obligatorio'}"
                         accept=".jpg"
                         multiple="true"
+                        @change="onFileChange"
                     />
+
+                    <div v-if="isImageUploaded">
+                        <p class="font-black">Imagen Producto</p>
+
+                        <img 
+                        :src="url"
+                        alt="Nueva Imagen Producto"
+                        class="w-32"
+
+                        />
+                    
+                    </div>
 
                     <FormKit
                         type="select"
