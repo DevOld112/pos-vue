@@ -106,7 +106,6 @@ const formData = reactive({
                         validation="required"
                         :validation-messages="{required: 'El Precio del Producto es Obligatorio'}"
                         min="1"
-                        step="10"
                         v-model.number="formData.price"
                     />
 
