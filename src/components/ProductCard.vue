@@ -14,7 +14,8 @@ defineProps({
 
 <template>
     <div
-        class="rounded bg-white shadow relative"
+        v-if="product.availability"
+        class='rounded bg-white shadow relative'
     >
         <img
         :src="product.image"

@@ -27,7 +27,6 @@ export const useCouponStore = defineStore('coupon', () => {
 
             setTimeout(() => {
                 discountPercentage.value = VALID_COUPONS.find(coupon => coupon.name === couponInput.value).discount
-                console.log(discountPercentage.value)
                 couponValidationMessage.value = '¡Descuento Aplicado!'
             }, 3000)
 
@@ -41,12 +40,20 @@ export const useCouponStore = defineStore('coupon', () => {
         }, 6000)
     }
 
+    function $reset() {
+        couponInput.value = ''
+        couponValidationMessage.value = ''
+        discountPercentage.value = 0
+        discount.value = 0
+    }
+
     const isValidCoupon = computed(() => discountPercentage.value > 0)
 
     return{
         couponInput,
         discount,
         applyCoupon,
+        $reset,
         couponValidationMessage,
         isValidCoupon
     }

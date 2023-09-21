@@ -14,7 +14,9 @@ defineProps({
 </script>
 
 <template>
-    <li class="flex items-center space-x-6 border border-gray-200 bg-white shadow p-4">
+    <li 
+        :class="product.availability ? 'flex items-center space-x-6 border border-gray-200 bg-white shadow p-4' : 'flex items-center space-x-6 border border-gray-200 bg-white shadow p-4 opacity-30'"
+    >
 
         <img
             :src="product.image"
